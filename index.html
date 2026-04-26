@@ -40,6 +40,7 @@ nav{
 nav ul{list-style:none;display:flex;gap:2rem}
 nav ul a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:color .2s}
 nav ul a:hover{color:var(--gold)}
+.nav-menu{list-style:none;display:flex;gap:2rem}
 .nav-socials{display:flex;gap:10px;align-items:center}
 .nav-socials a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.1);transition:all .2s}
 .nav-socials a:hover{color:var(--gold);border-color:rgba(201,168,76,0.4)}
@@ -222,6 +223,140 @@ section{padding:5.5rem 2.5rem}
   display:flex;align-items:center;gap:5px;
 }
 .badge-verify::after{content:'↗';font-size:0.8rem}
+
+/* ── PORTFOLIO ── */
+#portfolio{background:var(--white)}
+.portfolio-intro{
+  max-width:760px;
+  font-size:0.95rem;
+  color:var(--text-muted);
+  line-height:1.8;
+  margin-bottom:2rem;
+}
+.portfolio-status{
+  display:none;
+  margin-bottom:1.5rem;
+  padding:1rem 1.2rem;
+  border-radius:var(--rl);
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text-muted);
+  font-size:0.9rem;
+}
+.portfolio-status.is-visible{display:flex;align-items:center;gap:0.75rem}
+.portfolio-status.is-error{
+  background:#fff7ed;
+  border-color:#fdba74;
+  color:#9a3412;
+}
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.portfolio-card{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  min-height:100%;
+  padding:1.6rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--rl);
+  transition:border-color .2s, box-shadow .2s, transform .2s;
+}
+.portfolio-card:hover{
+  border-color:var(--gold);
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
+  transform:translateY(-3px);
+}
+.portfolio-card-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:1rem;
+}
+.portfolio-card h3{
+  font-size:1.02rem;
+  line-height:1.35;
+  color:var(--text);
+}
+.portfolio-updated{
+  flex-shrink:0;
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+.portfolio-description{
+  color:var(--text-muted);
+  font-size:0.9rem;
+  line-height:1.7;
+  flex-grow:1;
+}
+.portfolio-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.6rem;
+}
+.portfolio-language{
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
+  padding:0.35rem 0.8rem;
+  border-radius:999px;
+  background:var(--blue-pale);
+  color:var(--blue);
+  font-size:0.76rem;
+  font-weight:600;
+}
+.portfolio-language::before{
+  content:'';
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:currentColor;
+}
+.portfolio-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.8rem;
+  margin-top:auto;
+}
+.portfolio-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.45rem;
+  min-width:140px;
+  padding:0.8rem 1rem;
+  border-radius:var(--r);
+  text-decoration:none;
+  font-size:0.8rem;
+  font-weight:600;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  transition:transform .2s, box-shadow .2s, background .2s, color .2s, border-color .2s;
+}
+.portfolio-link:hover{transform:translateY(-2px)}
+.portfolio-link-primary{
+  background:var(--gold);
+  color:var(--navy);
+}
+.portfolio-link-primary:hover{
+  background:var(--gold-light);
+  box-shadow:0 8px 20px rgba(201,168,76,0.25);
+}
+.portfolio-link-secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:var(--white);
+}
+.portfolio-link-secondary:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
 #contato{background:var(--white)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
 .email-card{
@@ -278,6 +413,9 @@ footer{
   .hero-btns{justify-content:center}
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
+  .portfolio-card-head{flex-direction:column}
+  .portfolio-actions{flex-direction:column}
+  .portfolio-link{width:100%}
 }
 
 /* ── REVEAL ── */
@@ -300,12 +438,13 @@ footer{
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Marcelo<span>.</span>Moraes</div>
-  <ul>
+  <ul class="nav-menu">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#experiencia">Experiência</a></li>
     <li><a href="#educacao">Educação</a></li>
     <li><a href="#habilidades">Habilidades</a></li>
     <li><a href="#cisco">Cisco</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
   <div class="nav-socials">
@@ -581,6 +720,20 @@ footer{
   </div>
 </section>
 
+<!-- PORTFÓLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <p class="section-label">Projetos em destaque</p>
+    <h2 class="section-title">Portfólio</h2>
+    <div class="divider"></div>
+    <p class="portfolio-intro reveal">Projetos carregados automaticamente do GitHub para manter esta secção sempre atualizada com os repositórios mais recentes, incluindo links para código-fonte e demonstrações quando disponíveis.</p>
+    <div id="portfolio-status" class="portfolio-status is-visible reveal" role="status" aria-live="polite">
+      <span>A carregar projetos do GitHub…</span>
+    </div>
+    <div id="portfolio-grid" class="portfolio-grid reveal" aria-live="polite"></div>
+  </div>
+</section>
+
 <!-- CONTATO -->
 <section id="contato">
   <div class="section-inner">
@@ -630,6 +783,98 @@ footer{
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   reveals.forEach(r => observer.observe(r));
+
+  const githubPortfolioEndpoint = 'https://api.github.com/users/MarceloMoraes1991/repos';
+  const excludedRepositories = new Set(['cv', 'marcelomoraes.github.io']);
+  const portfolioGrid = document.getElementById('portfolio-grid');
+  const portfolioStatus = document.getElementById('portfolio-status');
+
+  const setPortfolioStatus = (message, isError = false) => {
+    portfolioStatus.textContent = message;
+    portfolioStatus.classList.add('is-visible');
+    portfolioStatus.classList.toggle('is-error', isError);
+  };
+
+  const clearPortfolioStatus = () => {
+    portfolioStatus.textContent = '';
+    portfolioStatus.classList.remove('is-visible', 'is-error');
+  };
+
+  const formatUpdatedAt = (value) => {
+    if (!value) return '';
+    return new Intl.DateTimeFormat('pt-PT', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    }).format(new Date(value));
+  };
+
+  const createPortfolioCard = (repo) => {
+    const card = document.createElement('article');
+    card.className = 'portfolio-card';
+
+    const safeDescription = repo.description || 'Projeto sem descrição pública no momento.';
+    const safeLanguage = repo.language || 'Não informado';
+    const safeHomepage = typeof repo.homepage === 'string' ? repo.homepage.trim() : '';
+    const updatedLabel = formatUpdatedAt(repo.updated_at);
+
+    card.innerHTML = `
+      <div class="portfolio-card-head">
+        <h3>${repo.name}</h3>
+        <span class="portfolio-updated">${updatedLabel ? `Atualizado ${updatedLabel}` : ''}</span>
+      </div>
+      <p class="portfolio-description">${safeDescription}</p>
+      <div class="portfolio-meta">
+        <span class="portfolio-language">${safeLanguage}</span>
+      </div>
+      <div class="portfolio-actions">
+        <a class="portfolio-link portfolio-link-primary" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver repositório</a>
+        ${safeHomepage ? `<a class="portfolio-link portfolio-link-secondary" href="${safeHomepage}" target="_blank" rel="noopener noreferrer">Ver demo</a>` : ''}
+      </div>
+    `;
+
+    return card;
+  };
+
+  const loadPortfolio = async () => {
+    try {
+      const response = await fetch(githubPortfolioEndpoint, {
+        headers: { Accept: 'application/vnd.github+json' }
+      });
+
+      if (!response.ok) {
+        throw new Error(`GitHub API returned ${response.status}`);
+      }
+
+      const repositories = await response.json();
+
+      if (!Array.isArray(repositories)) {
+        throw new Error('Invalid GitHub API response');
+      }
+
+      const visibleRepositories = repositories
+        .filter((repo) => repo && !excludedRepositories.has(repo.name))
+        .sort((left, right) => new Date(right.updated_at) - new Date(left.updated_at));
+
+      portfolioGrid.innerHTML = '';
+
+      if (!visibleRepositories.length) {
+        setPortfolioStatus('Nenhum projeto público disponível neste momento. Consulte o perfil no GitHub para mais detalhes.', true);
+        return;
+      }
+
+      visibleRepositories.forEach((repo) => {
+        portfolioGrid.appendChild(createPortfolioCard(repo));
+      });
+
+      clearPortfolioStatus();
+    } catch (error) {
+      portfolioGrid.innerHTML = '';
+      setPortfolioStatus('Não foi possível carregar os projetos agora. Visite o perfil no GitHub para consultar o portfólio completo.', true);
+    }
+  };
+
+  loadPortfolio();
 </script>
 </body>
 </html>
